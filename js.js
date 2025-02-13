@@ -88,7 +88,10 @@ const translations = {
         crewText: "Our crew is a team of professionals dedicated to providing premium service on the water. With years of experience, we ensure your safety and comfort, making each tour unforgettable.",
         adventureText: "For nature and exploration lovers, our adventure offer is the perfect choice! Enjoy jumping from the boat, swimming in the crystal clear sea, and exploring secret caves along the Budva coast. These tours provide a unique opportunity to discover hidden coves and natural beauties that you can only experience from a boat. The crew will take you to the most beautiful and inaccessible places, where you can relax and enjoy nature, swimming and exploring, while we take care of your safety and comfort.",
         offersText: "Take advantage of our special offer and rent a boat at affordable prices! Whether you want to enjoy a relaxing day at sea, explore hidden places or plan a party with friends, our boat is the perfect choice.",
-        language: "Language"
+        language: "Language",
+        reserveNow: "Reserve Now",
+        discover: "Discover",
+        ourLocation: "Our Location"
     },
     serbian: {
         title: "Odyssey Boat",
@@ -105,7 +108,10 @@ const translations = {
         crewText: "Naša posada je tim profesionalaca posvećenih pružanju vrhunske usluge na vodi. Sa dugogodišnjim iskustvom, obezbeđujemo vašu sigurnost i komfor, čineći svaku turu nezaboravnom.",
         adventureText: "Za ljubitelje prirode i istraživanja, naša avanturistička ponuda je savršen izbor! Uživajte u skakanju sa broda, plivanju u kristalno čistom moru i istraživanju tajnih pećina duž budvanske obale. Ove ture pružaju jedinstvenu priliku da otkrijete skrivene uvale i prirodne lepote koje možete doživeti samo sa broda. Posada će vas odvesti do najlepših i nedostupnih mesta, gde možete opušteno uživati u prirodi, plivanju i istraživanju, dok se brinemo o vašoj sigurnosti i komforu.",
         offersText: "Iskoristite našu specijalnu ponudu i iznajmite brod po povoljnim cenama! Bilo da želite da uživate u opuštajućem danu na moru, istražujete skrivena mesta ili planirate zabavu sa prijateljima, naš brod je savršen izbor.",
-        language: "Jezik"
+        language: "Jezik",
+        reserveNow: "Rezerviši Odmah",
+        discover: "Otkrij",
+        ourLocation: "Naša Lokacija"
     },
     russian: {
         title: "Odyssey Boat",
@@ -122,7 +128,10 @@ const translations = {
         crewText: "Наша команда - это профессионалы, преданные предоставлению первоклассного обслуживания на воде. С многолетним опытом мы обеспечиваем вашу безопасность и комфорт, делая каждый тур незабываемым.",
         adventureText: "Для любителей природы и исследований наше приключенческое предложение - идеальный выбор! Наслаждайтесь прыжками с лодки, плаванием в кристально чистом море и исследованием секретных пещер вдоль побережья Будвы. Эти туры предоставляют уникальную возможность открыть для себя скрытые бухты и природные красоты, которые можно испытать только с лодки. Команда доставит вас к самым красивым и недоступным местам, где вы сможете расслабиться и наслаждаться природой, плаванием и исследованиями, пока мы заботимся о вашей безопасности и комфорте.",
         offersText: "Воспользуйтесь нашим специальным предложением и арендуйте лодку по доступным ценам! Хотите ли вы насладиться расслабляющим днем на море, исследовать скрытые места или планируете вечеринку с друзьями, наша лодка - идеальный выбор.",
-        language: "Язык"
+        language: "Язык",
+        reserveNow: "Забронировать",
+        discover: "Узнать Больше",
+        ourLocation: "Наше Расположение"
     }
 };
 
@@ -264,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close navbar when clicking nav links on mobile and handle smooth scrolling
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevent default anchor behavior
+            e.preventDefault();
             
             // Close mobile menu if open
             if (window.innerWidth < 992) {
@@ -272,14 +281,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 bsCollapse.hide();
             }
 
-            // Get target section and scroll with offset for navbar height
+            // Get target section
             const targetId = link.getAttribute('href').substring(1);
             const targetSection = document.getElementById(targetId);
+            
             if (targetSection) {
+                // Calculate offset based on navbar height and screen size
                 const navbarHeight = navbar.offsetHeight;
-                const targetPosition = targetSection.offsetTop - navbarHeight;
+                const offset = window.innerWidth < 992 ? 0 : navbarHeight;
+                
+                // Scroll to target with offset
                 window.scrollTo({
-                    top: targetPosition,
+                    top: targetSection.offsetTop - offset,
                     behavior: 'smooth'
                 });
             }
@@ -502,4 +515,15 @@ function updateContent(lang) {
     document.querySelector('#crew .lead').textContent = content.crewText;
     document.querySelector('#adventure .lead').textContent = content.adventureText;
     document.querySelector('#offers .lead').textContent = content.offersText;
+
+    // Update buttons and links
+    document.querySelectorAll('[data-translate="reserveNow"]').forEach(el => {
+        el.textContent = content.reserveNow;
+    });
+    document.querySelectorAll('[data-translate="discover"]').forEach(el => {
+        el.textContent = content.discover;
+    });
+    document.querySelectorAll('[data-translate="ourLocation"]').forEach(el => {
+        el.textContent = content.ourLocation;
+    });
 }
