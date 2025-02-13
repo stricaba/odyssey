@@ -1,0 +1,390 @@
+:root {
+    --primary-color: #001F3F;
+    --secondary-color: #CFAF5A;
+    --text-color: #FFFFFF;
+    --text-hover: #E5E5E5;
+    --dark-bg: #111111;
+    --light-gray: #CCCCCC;
+    --glass-bg: rgba(0, 0, 0, 0.9);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --transition: all 0.3s ease-in-out;
+    --btn-shadow: 0 4px 15px rgba(207, 175, 90, 0.3);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&family=Cormorant+Garamond:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    width: auto;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    background: transparent;
+    border-left: 1px solid var(--glass-border);
+    padding: 1rem 2rem;
+    transition: background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+    background-color: var(--dark-bg);
+    backdrop-filter: blur(5px);
+}
+
+.navbar-brand h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: var(--transition);
+}
+
+.nav-link {
+    font-family: 'Raleway', sans-serif;
+    color: var(--text-color) !important;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 0.5rem 1rem;
+    margin: 0.2rem 0;
+    transition: var(--transition);
+    border-left: 2px solid transparent;
+}
+
+.nav-link:hover {
+    color: var(--text-hover) !important;
+    border-left: 2px solid var(--secondary-color);
+    transform: none;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.special-offer {
+    background: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-left: 2px solid var(--secondary-color);
+}
+
+/* Hero Section */
+#hero {
+    position: relative;
+    background-color: #000;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://i.ibb.co/mrQpFGng/IMG-3010-upscaled.jpg') no-repeat center center;
+    background-size: cover;
+    transform: scale(1.1);
+    will-change: transform;
+    z-index: 1;
+    filter: blur(3px);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+
+#hero .container {
+    position: relative;
+    z-index: 3;
+}
+
+.display-3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+    color: var(--text-color);
+}
+
+.explore-btn {
+    font-family: 'Cormorant Garamond', serif;
+    background: var(--primary-color);
+    border: 2px solid var(--secondary-color);
+    color: var(--text-color);
+    padding: 15px 35px;
+    border-radius: 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: var(--btn-shadow);
+    transition: var(--transition);
+}
+
+.discover-btn {
+    font-family: 'Cormorant Garamond', serif;
+    background: transparent;
+    border: 2px solid var(--text-color);
+    padding: 15px 35px;
+    border-radius: 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    color: var(--text-color);
+}
+
+.explore-btn:hover, .discover-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(207, 175, 90, 0.4);
+}
+
+/* Slider Indicators */
+.indicator {
+    width: 30px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 0;
+    transition: var(--transition);
+}
+
+.indicator.active {
+    background: var(--secondary-color);
+    width: 45px;
+}
+
+/* Section Styles */
+#boat-tour, #about, #adventure {
+    padding: 100px 0;
+    position: relative;
+    color: #000000;
+}
+
+#party-boat, #crew, #offers {
+    padding: 100px 0;
+    position: relative;
+    color: var(--text-color);
+}
+
+/* Image hover animation */
+.img-fluid {
+    transition: transform 0.5s ease-in-out;
+    max-width: 100%;
+    height: auto;
+}
+
+.img-fluid:hover {
+    animation: zoomAndRotate 1s forwards;
+    animation-iteration-count: 1;
+}
+
+@keyframes zoomAndRotate {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.1) rotate(2deg);
+    }
+    100% {
+        transform: scale(1.05) rotate(0deg);
+    }
+}
+
+.bg-dark {
+    background: var(--dark-bg) !important;
+}
+
+section h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 50px;
+    position: relative;
+    display: inline-block;
+}
+
+.bg-dark section h2 {
+    color: var(--text-color);
+}
+
+section h2:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--secondary-color);
+}
+
+section p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.bg-dark section p {
+    color: var(--light-gray);
+}
+
+/* Footer */
+.footer {
+    background: var(--dark-bg);
+    position: relative;
+    padding: 50px 0 30px;
+}
+
+.golden-line {
+    height: 2px;
+    background: var(--secondary-color);
+    width: 100%;
+}
+
+.footer p {
+    font-family: 'Raleway', sans-serif;
+    color: var(--light-gray);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.social-icons a {
+    font-size: 1.2rem;
+    transition: var(--transition);
+    color: var(--text-color);
+}
+
+.social-icons a:hover {
+    color: var(--secondary-color) !important;
+    transform: translateY(-3px);
+}
+
+/* Desktop (1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+    
+    .display-3 {
+        font-size: 4rem;
+    }
+    
+    .navbar {
+        padding: 1.5rem 3rem;
+    }
+}
+
+/* Laptop (992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .display-3 {
+        font-size: 3.5rem;
+    }
+    
+    section {
+        padding: 80px 0;
+    }
+}
+
+/* Tablet (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    .display-3 {
+        font-size: 2.8rem;
+        letter-spacing: 2px;
+    }
+    
+    .navbar-collapse {
+        background: var(--glass-bg);
+        padding: 1rem;
+    }
+    
+    section {
+        padding: 70px 0;
+    }
+    
+    section h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Large Mobile (576px to 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .container {
+        max-width: 540px;
+    }
+    
+    .display-3 {
+        font-size: 2rem;
+    }
+    
+    .navbar {
+        padding: 1rem;
+    }
+    
+    .explore-btn, .discover-btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+    
+    section {
+        padding: 60px 0;
+    }
+}
+
+/* Small Mobile (575px and down) */
+@media (max-width: 575px) {
+    .display-3 {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+    
+    .navbar {
+        padding: 0.8rem;
+    }
+    
+    .navbar-brand h1 {
+        font-size: 1.2rem;
+    }
+    
+    .explore-btn, .discover-btn {
+        padding: 10px 20px;
+        font-size: 0.8rem;
+        margin: 5px;
+    }
+    
+    section {
+        padding: 40px 0;
+    }
+    
+    section h2 {
+        font-size: 1.5rem;
+    }
+    
+    section p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    .footer {
+        padding: 30px 0 20px;
+    }
+}
